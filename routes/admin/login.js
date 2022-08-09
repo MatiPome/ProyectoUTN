@@ -9,23 +9,30 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/logout', function(req, res, next){
+    req.session.destroy();
+    res.render('admin/login',{
+        layout: 'admin/layout'
+    });
+});
+
 router.post('/', async (req, res, next) => {
     try {
         var name = req.body.name;
         var password = req.body.password;
-        
-        var data = await usersModel.getUserByUsernameAndPassword(name,password);
+
+        var data = await usersModel.getUserByUsernameAndPassword(name, password);
 
         if (data != undefined) {
-            // req.session.id.name = data.id;
-            // req.session.name = data.name;
-            res.redirect('/admin/novedades');
+            req.session.id_name = data.id;
+            req.session.name = data.name;
+            res.redirect('/admin/news');
         }
         else {
             res.render('admin/login', {
                 layout: 'admin/layout',
                 error: true
-                
+
             });
         }
 
@@ -34,6 +41,8 @@ router.post('/', async (req, res, next) => {
         console.log(error);
     }
 })
+
+
 
 
 module.exports = router;
