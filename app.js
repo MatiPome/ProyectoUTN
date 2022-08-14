@@ -6,8 +6,10 @@ var logger = require('morgan');
 
 
 
+
 require('dotenv').config();
 var session = require('express-session');
+var fileUpload = require('express-fileupload');
 
 
 
@@ -34,7 +36,12 @@ app.use(session({
   secret: '12w45qe1qw4q1eq54eq5',
   resave: false,
   saveUninitialized: true 
-}))
+}));
+
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp'
+}));
 
 secured = async (req,res,next) => {
   try {

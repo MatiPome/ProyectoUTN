@@ -1,0 +1,37 @@
+body{
+    background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+}
+.contact-form{
+    background: #fff;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width: 100%;
+}
+.contact-form .form-control{
+    border-radius:1rem;
+}
+.contact-image{
+    text-align: center;
+}
+.contact-image img{
+    border-radius: 6rem;
+    width: 11%;
+    margin-top: -3%;
+    transform: rotate(29deg);
+}
+
+.flexer{
+    display: flex;
+    padding: 0 0;
+    flex-direction: column;
+}
+
+.btnContact{
+    width: 100%;
+    
+}
+h3{
+    text-align: center;
+    color: #0357be;
+}
+
