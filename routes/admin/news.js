@@ -39,7 +39,7 @@ router.post('/add', async (req, res, next) => {
 
         if (req.body.title != "" && req.body.subtitle != "" && req.body.modalBody != "") {
             await newsModel.insertNews({
-                ...req.body, 
+                ...req.body,
                 img_id
             });
             res.redirect('/admin/news')
@@ -59,7 +59,7 @@ router.post('/add', async (req, res, next) => {
     }
 });
 
-router.get('/edit/:id', async (res, req, next) => {
+router.get('/edit/:id', async (req, res, next) => {
 
     var id = req.params.id;
     var news = await newsModel.getNewsById(id);
