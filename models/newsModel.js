@@ -30,6 +30,7 @@ async function getNewsById(id) {
 }
 
 async function editNewsById(obj, id) {
+    console.log('check5');
     try {
         var query = "update news set ? where id=?";
         var rows = await pool.query(query, [obj, id]);

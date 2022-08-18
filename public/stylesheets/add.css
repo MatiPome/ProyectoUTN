@@ -1,37 +1,54 @@
-body{
+body {
     background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+
 }
-.contact-form{
-    background: #fff;
+
+
+.contact-form {
+    text-align: center;
     margin-top: 10%;
     margin-bottom: 5%;
-    width: 100%;
+
 }
-.contact-form .form-control{
-    border-radius:1rem;
+
+.contact-form .form-control {
+    border-radius: 1rem;
 }
-.contact-image{
+
+.contact-image {
     text-align: center;
 }
-.contact-image img{
+
+.contact-image img {
     border-radius: 6rem;
     width: 11%;
     margin-top: -3%;
     transform: rotate(29deg);
 }
 
-.flexer{
+.flexer {
     display: flex;
     padding: 0 0;
     flex-direction: column;
 }
 
-.btnContact{
+.btnContact {
     width: 100%;
-    
+
 }
-h3{
+
+h3 {
     text-align: center;
     color: #0357be;
 }
 
+
+
+.form-control:hover {
+    -webkit-transition: background-color 1000ms linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1000ms linear;
+    background: #000000;
+    color: wheat;
+    border-style: dotted;
+}

@@ -5,15 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
-
-
-
 require('dotenv').config();
 var session = require('express-session');
 var fileUpload = require('express-fileupload');
-
-
-
 
 
 var indexRouter = require('./routes/index');
@@ -67,8 +61,6 @@ app.use('/users', usersRouter);
 app.use('/admin/login', loginRouter);
 app.use('/contactus', contactusRouter);
 app.use('/admin/news',secured, adminRouter);
-
-
 
 
 

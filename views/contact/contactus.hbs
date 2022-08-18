@@ -1,56 +1,91 @@
 {{!-- Contact us form --}}
+{{!-- <div>
+    <div>
+        <form id="form" class="row g-3 p-4" action="contactus" method="POST">
+            <h1>Contact Us</h1>
+            <div class="col-sm-3">
+                <label for="name" class="form-label">name</label>
+                <input type="text" class="form-control" id="firstname" value="" required>
+            </div>
 
-<form id="form" class="row g-3 p-4" action="contactus" method="POST">
-    <h1>Contact Us</h1>
-    <div class="col-sm-3">
-        <label for="firstname" class="form-label">First name</label>
-        <input type="text" class="form-control" id="firstname" value="" required>
+            <div class="col-sm-6">
+                <label for="email" class="form-label">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                    <input type="text" class="form-control" id="email" aria-describedby="inputGroupPrepend2" required>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" required>
+            </div>
+
+            <div class="col-sm-3">
+                <label for="msg" class="form-label">message</label>
+                <textarea class="form-control" name="msg" id="msg" cols="30" rows="10" required></textarea>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+
     </div>
-    <div class="col-sm-3">
-        <label for="lastname" class="form-label">Last name</label>
-        <input type="text" class="form-control" id="lastname" value="" required>
+</div> --}}
+
+<link rel="stylesheet" href="/stylesheets/add.css">
+
+<div class="container contact-form">
+    <div class="contact-image">
+        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
     </div>
-    <div class="col-sm-6">
-        <label for="email" class="form-label">Email</label>
-        <div class="input-group">
-            <span class="input-group-text" id="inputGroupPrepend2">@</span>
-            <input type="text" class="form-control" id="email" aria-describedby="inputGroupPrepend2" required>
+    <form class="flexer" method="post" action="./contactus">
+        <h3>Contact Us</h3>
+        <div class="row contactStyle">
+
+            <div class="row">
+                <div class="col">
+
+                    <div class="col">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="firstname" name="name" required>
+                    </div>
+
+                    <div class="col">
+                        <label for="email" class="form-label">Email</label>
+                        <div class="input-group ">
+                            <span class="input-group-text " id="inputGroupPrepend2">@</span>
+                            <input type="text" class="form-control" id="email" name="email"
+                                aria-describedby="inputGroupPrepend2" required>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <label for="msg" class="form-label">message</label>
+                    <textarea class="form-control" name="msg" id="msg" cols="30" rows="10" required></textarea>
+                </div>
+
+            </div>
         </div>
-    </div>
-    <div class="col-sm-6">
-        <label for="city" class="form-label">City</label>
-        <input type="text" class="form-control" id="city" required>
-    </div>
-    <div class="col-sm-6">
-        <label for="state" class="form-label">State</label>
-        <input type="text" class="form-control" id="state" required>
-    </div>
-    <div class="col-sm-3">
-        <label for="phone" class="form-label">Phone</label>
-        <input type="text" class="form-control" id="phone" required>
-    </div>
-    <div class="col-12">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-            <label class="form-check-label" for="invalidCheck2">
-                Agree to terms and conditions
-            </label>
+        <div class="py-4">
+            <div class="form-group">
+                <button type="submit" class="btnContact btn btn-danger">Submit</button>
+            </div>
         </div>
-    </div>
-    <div class="col-12">
-        <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
-</form>
-<!-- CAPCHA!!! -->
-<div id="captch" class="center">
-    <div id="captchaBackground">
-        <canvas id="captcha">captcha text</canvas>
-        <input id="textBox" type="text" name="text">
-        <div id="buttons">
-            <input id="submitButton" type="submit">
-            <button id="refreshButton" type="submit">Refresh</button>
-        </div>
-        <span id="output"></span>
-    </div>
+        {{#if error}}
+        <h5>{{message}}</h5>
+        {{/if}}
+    </form>
 </div>
-<!-- END OF CAPTCHA -->
+
+{{message}}

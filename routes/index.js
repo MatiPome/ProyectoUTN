@@ -7,8 +7,7 @@ var cloudinary = require('cloudinary').v2;
 /* GET home page. */
 router.get('/', async function (req, res, next) {
 
-  var news = await newsModel.getNews();
-
+  news = await newsModel.getNews();
   news = news.splice(0, 5)
   news = news.map(news1 => {
     if (news1.img_id) {

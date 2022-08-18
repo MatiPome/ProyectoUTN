@@ -41,9 +41,9 @@ router.get('/', async function (req, res, next) {
 router.get('/delete/:id', async (req, res, next) => {
     var id = req.params.id;
 
-    let news = await newsModel.getNewsById(id);
-    if (news.img_id) {
-        await (destroy(news.img_id));
+    let news1 = await newsModel.getNewsById(id);
+    if (news1.img_id) {
+        await (destroy(news1.img_id));
     }
 
     await newsModel.deleteNewsById(id);
@@ -62,6 +62,7 @@ router.post('/add', async (req, res, next) => {
         if (req.files && Object.keys(req.files).length > 0) {
             image = req.files.image;
             img_id = (await uploader(image.tempFilePath)).public_id;
+            console.log('check');
         }
 
 
@@ -98,7 +99,7 @@ router.get('/edit/:id', async (req, res, next) => {
 });
 
 router.post('/edit', async (req, res, next) => {
-  
+    console.log('check4');
     try {
         let img_id = req.body.img_original;
         let delete_img_old = false;
@@ -106,15 +107,18 @@ router.post('/edit', async (req, res, next) => {
         if (req.body.img_delete === "1") {
             img_id = null;
             delete_img_old = true;
+            console.log('check1');
         } else {
             if (req.files && Object.keys(req.files).length > 0) {
                 image = req.files.image;
                 img_id = (await uploader(image.tempFilePath)).public_id;
                 delete_img_old = true;
+                console.log('check2');
             }
         }
         if (delete_img_old && req.body.img_original) {
             await (destroy(req.body.img_original));
+            console.log('check3');
         }
         
         var obj = {

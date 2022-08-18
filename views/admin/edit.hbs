@@ -4,7 +4,7 @@
     <div class="contact-image">
         <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
     </div>
-    <form class="flexer" method="post" action="/admin/news/edit">
+    <form class="flexer" method="post" action="/admin/news/edit" enctype="multipart/form-data">
         <h3>Edit News</h3>
         <input type="hidden" value="{{news.id}}" name="id">
         <div class="row">
@@ -30,7 +30,8 @@
         </div>
         <div class="py-4">
             <div class="form-group grid-center ">
-                <input type="submit" name="btnSubmit" class="btnContact btn btn-danger" value="Submit" />
+                {{!-- <input type="submit" name="btnSubmit" class="btnContact btn btn-danger" value="Submit" /> --}}
+                <button type="submit" class="btn btn-danger btnContact">Submit</button>
             </div>
         </div>
 
