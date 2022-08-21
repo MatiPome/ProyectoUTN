@@ -22,6 +22,16 @@ h2 {
 
 }
 
+.seek{
+    border-radius: 12px;
+    border: 0px;
+}
+
+.searchBtn{
+    text-align: center;
+    padding: 0 0;
+}
+
 .newBtn {
     text-align: right;
     padding: 0 0;

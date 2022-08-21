@@ -19,11 +19,35 @@
 <h2>List of News</h2>
 
 
+
+ <div class="col searchBtn">
+        <form action="/admin/news" method="get">
+            <input class="seek" type="search" name="q" {{#if q}}value="{{q}}"{{/if}} placeholder="Search"
+                aria-label="Search">
+            <button class="btn btn-info" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+
+             {{#if is_search}}
+        {{#unless news.length}}
+            No result was found for "<strong>{{q}}</strong>"
+        {{/unless}}
+    {{/if}}
+        </form>
+    </div>
+
+    
+   
+
+
 <div class="col newBtn px-5">
     <a href="/admin/news/add" class="btn btn-xl btn-success">
         <i class="bi bi-plus">New</i>
     </a>
 </div>
+
+
+
 
 <div class="row newslist">
     <div class="col">

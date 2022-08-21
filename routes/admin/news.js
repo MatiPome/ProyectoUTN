@@ -10,7 +10,15 @@ const destroy = util.promisify(cloudinary.uploader.destroy);
 
 
 router.get('/', async function (req, res, next) {
-    var news = await newsModel.getNews();
+
+    // var news = await newsModel.getNews();
+
+    var news
+    if (req.query.q === undefined){
+        news = await newsModel.getNews();
+    } else {
+        news = await newsModel.searchNews(req.query.q);
+    }
 
     news = news.map(news1 => {
         if (news1.img_id) {
@@ -34,7 +42,9 @@ router.get('/', async function (req, res, next) {
     res.render('admin/news', {
         layout: 'admin/layoutghost',
         user: req.session.name,
-        news
+        news,
+        is_search: req.query.q !==undefined,
+        q: req.query.q
     });
 });
 
@@ -99,10 +109,10 @@ router.get('/edit/:id', async (req, res, next) => {
 });
 
 router.post('/edit', async (req, res, next) => {
-    console.log('check4');
     try {
         let img_id = req.body.img_original;
         let delete_img_old = false;
+        
 
         if (req.body.img_delete === "1") {
             img_id = null;
@@ -120,12 +130,12 @@ router.post('/edit', async (req, res, next) => {
             await (destroy(req.body.img_original));
             console.log('check3');
         }
-        
+
         var obj = {
             title: req.body.title,
             subtitle: req.body.subtitle,
             modalBody: req.body.modalBody,
-            img_id  
+            img_id
         }
 
         await newsModel.editNewsById(obj, req.body.id);

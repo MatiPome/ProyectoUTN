@@ -41,4 +41,10 @@ async function editNewsById(obj, id) {
 
 }
 
-module.exports = { getNews, deleteNewsById, insertNews, getNewsById, editNewsById }
+async function searchNews(search) {
+    var query = "select * from news where title like ? OR subtitle like ? OR modalBody like ?";
+    var rows = await pool.query(query, ['%' + search + '%', '%' + search + '%', '%' + search + '%'])
+    return rows;
+}
+
+module.exports = { getNews, deleteNewsById, insertNews, getNewsById, editNewsById, searchNews }
