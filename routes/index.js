@@ -22,7 +22,7 @@ router.get('/', async function (req, res, next) {
     } else {
       return{
         ...news1,
-        image: '/images/noimage.jpg'
+        image: ''
       };
     };
 
